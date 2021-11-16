@@ -152,4 +152,4 @@ const DepositorsInput: React.FC<IDepositorsInputProps> = (props) => {
   );
 };
 
-export default DepositorsInput;
+export { DepositorsInput };

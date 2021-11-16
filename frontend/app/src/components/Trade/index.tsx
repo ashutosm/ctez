@@ -11,7 +11,7 @@ import {
 import Swap from './Swap';
 import Liquidity from './Liquidity';
 import { ReactComponent as tune } from '../../assets/images/sidebar/tune_settings.svg';
-import { Settings } from './Settings/Settings';
+import Settings from './Settings';
 import { useThemeColors } from '../../hooks/utilHooks';
 
 const Trade: React.FC = () => {

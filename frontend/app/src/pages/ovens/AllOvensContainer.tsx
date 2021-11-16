@@ -7,7 +7,7 @@ import { useSortedOvensList } from '../../hooks/utilHooks';
 import { useAllOvenData } from '../../api/queries';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { setClear, setSearchValue } from '../../redux/slices/OvenSlice';
-import OvenSummary from '../../components/OvenSummary/OvenSummary';
+import OvenSummary from '../../components/OvenSummary';
 
 const AllOvensContainer: React.FC = () => {
   const { data, isLoading } = useAllOvenData();

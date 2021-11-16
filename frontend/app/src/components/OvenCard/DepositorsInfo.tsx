@@ -4,13 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { MdEdit, MdInfo } from 'react-icons/md';
 import { useOvenDelegate, useOvenStorage } from '../../api/queries';
 import { useWallet } from '../../wallet/hooks';
-import Button from '../button/Button';
-import Identicon from '../avatar/Identicon';
+import Button from '../button';
+import Identicon from '../avatar';
 import ChangeDepositor from '../modals/ChangeDepositor';
 import { AllOvenDatum } from '../../interfaces';
 import SkeletonLayout from '../skeleton';
 import data from '../../assets/data/info.json';
-import CopyAddress from '../CopyAddress/CopyAddress';
+import CopyAddress from '../CopyAddress';
 import { useThemeColors } from '../../hooks/utilHooks';
 
 const DepositorsInfo: React.FC<{ oven: AllOvenDatum | undefined; isImported: boolean }> = ({

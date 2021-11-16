@@ -21,7 +21,7 @@ import { useLocation } from 'react-router-dom';
 import { useAppDispatch } from '../../redux/store';
 import { openModal } from '../../redux/slices/UiSlice';
 import { MODAL_NAMES } from '../../constants/modals';
-import Button from '../../components/button/Button';
+import Button from '../../components/button';
 import { setClear, setSearchValue, setSortBy } from '../../redux/slices/OvenSlice';
 import AllOvensContainer from './AllOvensContainer';
 import MyOvensContainer from './MyOvensContainer';

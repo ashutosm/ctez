@@ -16,7 +16,7 @@ import { useOvenStats, useThemeColors } from '../../hooks/utilHooks';
 import ProgressPill from './ProgressPill';
 import { AllOvenDatum } from '../../interfaces';
 import data from '../../assets/data/info.json';
-import CopyAddress from '../CopyAddress/CopyAddress';
+import CopyAddress from '../CopyAddress';
 
 const OvenStats: React.FC<{ oven: AllOvenDatum | undefined; isImported: boolean }> = ({ oven }) => {
   const { stats } = useOvenStats(oven);

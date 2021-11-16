@@ -10,7 +10,7 @@ import {
   Text,
   useMediaQuery,
 } from '@chakra-ui/react';
-import data from '../../components/data/faq.json';
+import data from '../../assets/data/faq.json';
 import { useThemeColors } from '../../hooks/utilHooks';
 
 const FaqPage: React.FC = () => {

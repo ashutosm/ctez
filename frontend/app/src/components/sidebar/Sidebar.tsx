@@ -28,12 +28,7 @@ export interface Props {
   toggled: boolean;
 }
 
-export const Sidebar: React.FC<Props> = ({
-  handleCollapsed,
-  handleToggled,
-  collapsed,
-  toggled,
-}) => {
+const Sidebar: React.FC<Props> = ({ handleCollapsed, handleToggled, collapsed, toggled }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const { data } = useCtezBaseStats();
@@ -238,3 +233,5 @@ export const Sidebar: React.FC<Props> = ({
     </Box>
   );
 };
+
+export { Sidebar };

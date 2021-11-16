@@ -104,4 +104,4 @@ const Button: React.FC<IButtonProps> = (props) => {
   );
 };
 
-export default Button;
+export { Button };

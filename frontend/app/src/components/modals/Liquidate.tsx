@@ -17,7 +17,7 @@ import { validateAddress } from '@taquito/utils';
 import { number, object, string } from 'yup';
 import { useFormik } from 'formik';
 import { cTezError, liquidate } from '../../contracts/ctez';
-import Button from '../button/Button';
+import Button from '../button';
 import { AllOvenDatum } from '../../interfaces';
 import { useThemeColors, useTxLoader } from '../../hooks/utilHooks';
 import { useWallet } from '../../wallet/hooks';
@@ -25,7 +25,7 @@ import { inputFormatNumberStandard } from '../../utils/numbers';
 
 interface LiquidateForm {
   ovenOwner: string;
-  amount: number;
+  amount: number | '';
   to: string;
 }
 interface ILiquidateProps {
@@ -43,7 +43,7 @@ const LiquidateOven: React.FC<ILiquidateProps> = ({ isOpen, onClose, oven }) => 
   const { t } = useTranslation(['common']);
   const initialValues: LiquidateForm = {
     ovenOwner: oven?.key.owner ?? '',
-    amount: 0,
+    amount: '',
     to: userAddress ?? '',
   };
 

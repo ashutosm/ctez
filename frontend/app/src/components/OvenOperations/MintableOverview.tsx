@@ -12,7 +12,7 @@ import {
 import { MdInfo } from 'react-icons/md';
 import { useMemo, useState } from 'react';
 import { useOvenStats, useThemeColors } from '../../hooks/utilHooks';
-import Button from '../button/Button';
+import Button from '../button';
 import Burn from '../modals/Burn';
 import Mint from '../modals/Mint';
 import { AllOvenDatum } from '../../interfaces';

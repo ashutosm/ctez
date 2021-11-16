@@ -18,14 +18,14 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { useCallback } from 'react';
-import Button from '../button/Button';
+import Button from '../button';
 import { trimAddress } from '../../utils/addressUtils';
 import { useWallet } from '../../wallet/hooks';
 import { getBeaconInstance } from '../../wallet';
 import { APP_NAME, NETWORK } from '../../utils/globals';
 import { setWalletProvider } from '../../contracts/client';
 import { useUserBalance, useUserLqtData } from '../../api/queries';
-import Identicon from '../avatar/Identicon';
+import Identicon from '../avatar';
 import { formatNumber as formatNumberUtil, formatNumberStandard } from '../../utils/numbers';
 import { ReactComponent as copy } from '../../assets/images/sidebar/content_copy.svg';
 
@@ -166,4 +166,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export { SignIn };

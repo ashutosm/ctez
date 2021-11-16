@@ -3,7 +3,7 @@ import { FaChevronCircleDown } from 'react-icons/fa';
 import { MdInfo } from 'react-icons/md';
 import AddLiquidity from './AddLiquidity';
 import RemoveLiquidity from './RemoveLiquidity';
-import Button from '../../button/Button';
+import Button from '../../button';
 import { useThemeColors } from '../../../hooks/utilHooks';
 
 const Liquidity: React.FC = () => {

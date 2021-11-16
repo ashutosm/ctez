@@ -16,10 +16,10 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from '../button/Button';
+import Button from '../button';
 import { AllOvenDatum, OvenStorage } from '../../interfaces';
-import RadioCard from '../radio/RadioCard';
-import DepositorsInput from '../input/DepositorsInput';
+import RadioCard from '../radio';
+import DepositorsInput from '../input';
 import { trimAddress } from '../../utils/addressUtils';
 import { useWallet } from '../../wallet/hooks';
 import { addRemoveDepositorList, cTezError, enableDisableAnyDepositor } from '../../contracts/ctez';

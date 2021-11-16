@@ -14,7 +14,7 @@ import { MdInfo } from 'react-icons/md';
 import { useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useOvenStats, useThemeColors } from '../../hooks/utilHooks';
-import Button from '../button/Button';
+import Button from '../button';
 import Deposit from '../modals/Deposit';
 import Withdraw from '../modals/Withdraw';
 import { AllOvenDatum } from '../../interfaces';
