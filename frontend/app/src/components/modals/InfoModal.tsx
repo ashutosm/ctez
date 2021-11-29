@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import TxSubmitted from '../../assets/images/icons/tx-submitted.svg';
-import Button from '../button/Button';
+import Button from '../button';
 import { NETWORK } from '../../utils/globals';
 import { useThemeColors } from '../../hooks/utilHooks';
 

@@ -25,7 +25,7 @@ import { useFormik } from 'formik';
 import { useWallet } from '../../wallet/hooks';
 import { IWithdrawForm } from '../../constants/oven-operations';
 import { cTezError, withdraw } from '../../contracts/ctez';
-import Button from '../button/Button';
+import Button from '../button';
 import { TezIcon } from '../icons';
 import { BUTTON_TXT } from '../../constants/swap';
 import { AllOvenDatum } from '../../interfaces';
@@ -53,7 +53,7 @@ const Withdraw: React.FC<IWithdrawProps> = ({ isOpen, onClose, oven }) => {
   const { stats } = useOvenStats(oven);
   const handleProcessing = useTxLoader();
   const initialValues: IWithdrawForm = {
-    amount: 0,
+    amount: '',
     to: userAddress ?? '',
   };
 
@@ -85,7 +85,7 @@ const Withdraw: React.FC<IWithdrawProps> = ({ isOpen, onClose, oven }) => {
   const handleFormSubmit = async (data: IWithdrawForm) => {
     if (oven?.key.id) {
       try {
-        const result = await withdraw(Number(oven.key.id), data.amount, data.to);
+        const result = await withdraw(Number(oven.key.id), Number(data.amount), data.to);
         handleProcessing(result);
       } catch (error) {
         const errorText = cTezError[error.data[1].with.int as number] || t('txFailed');

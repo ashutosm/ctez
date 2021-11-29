@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Box, Flex } from '@chakra-ui/react';
 import React, { useState, Suspense } from 'react';
 import { routes } from './routes';
-import { Sidebar } from '../components/sidebar/Sidebar';
-import { Header } from '../components/header/Header';
+import Sidebar from '../components/sidebar';
+import Header from '../components/header';
 import { useThemeColors } from '../hooks/utilHooks';
 
 export const AppRouter: React.FC = () => {

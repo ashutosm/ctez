@@ -67,7 +67,7 @@ const useOvenStats: TUseOvenStats = (oven) => {
 
     let collateralUtilization = formatNumber(
       (formatNumber(ctezOutstanding, 0) / maxMintableCtez) * 100,
-    ).toFixed(1);
+    ).toFixed(2);
 
     if (collateralUtilization === 'NaN') {
       collateralUtilization = '0';
@@ -192,7 +192,7 @@ const useSortedOvensList: TUseSortedOvensList = (ovens) => {
       const maxMintableCtez = formatNumber(max < 0 ? 0 : max, 0);
       let collateralUtilization = formatNumber(
         (formatNumber(oven.value.ctez_outstanding, 0) / maxMintableCtez) * 100,
-      ).toFixed(1);
+      ).toFixed(2);
       if (collateralUtilization === 'NaN') {
         collateralUtilization = '0';
       }

@@ -66,4 +66,4 @@ const defaultProps: Props = {
 
 CopyAddress.defaultProps = defaultProps;
 
-export default CopyAddress;
+export { CopyAddress };

@@ -19,7 +19,7 @@ import { MdDelete } from 'react-icons/md';
 import { AllOvenDatum } from '../../interfaces';
 import ProgressPill from './ProgressPill';
 import { useOvenStats, useThemeColors } from '../../hooks/utilHooks';
-import CopyAddress from '../CopyAddress/CopyAddress';
+import CopyAddress from '../CopyAddress';
 import { useCtezBaseStats } from '../../api/queries';
 import { isMonthFromLiquidation } from '../../api/contracts';
 import SkeletonLayout from '../skeleton';

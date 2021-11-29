@@ -1,12 +1,12 @@
 export interface IMintRepayForm {
-  amount: number;
+  amount: number | '';
 }
 
 export interface IDepositForm {
-  amount: number;
+  amount: number | '';
 }
 
 export interface IWithdrawForm {
-  amount: number;
+  amount: number | '';
   to: string;
 }

@@ -7,8 +7,8 @@ import { ReactComponent as AllOvens } from '../../assets/images/sidebar/allovens
 import { ReactComponent as MyOvens } from '../../assets/images/sidebar/myovens.svg';
 import { ReactComponent as Trade } from '../../assets/images/sidebar/trade.svg';
 import { ReactComponent as Faq } from '../../assets/images/sidebar/faq.svg';
-import Button from '../button/Button';
-import SignIn from '../SignIn/SignIn';
+import Button from '../button';
+import SignIn from '../SignIn';
 import { useThemeColors } from '../../hooks/utilHooks';
 
 export interface IHeaderProps {
@@ -21,7 +21,7 @@ interface HeaderIconText {
   icon: JSX.Element | null;
 }
 
-export const Header: React.FC<IHeaderProps> = ({ handleToggled, toggled }) => {
+const Header: React.FC<IHeaderProps> = ({ handleToggled, toggled }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const [headerBackground] = useThemeColors(['headerBg']);
   const location = useLocation();
@@ -108,3 +108,5 @@ export const Header: React.FC<IHeaderProps> = ({ handleToggled, toggled }) => {
     </Box>
   );
 };
+
+export { Header };

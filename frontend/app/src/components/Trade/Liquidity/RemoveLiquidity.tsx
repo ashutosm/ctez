@@ -10,7 +10,7 @@ import { cfmmError, removeLiquidity } from '../../../contracts/cfmm';
 import { IRemoveLiquidityForm, REMOVE_BTN_TXT } from '../../../constants/liquidity';
 import { useWallet } from '../../../wallet/hooks';
 import { useCfmmStorage, useUserLqtData } from '../../../api/queries';
-import Button from '../../button/Button';
+import Button from '../../button';
 import { useAppSelector } from '../../../redux/store';
 import { useThemeColors, useTxLoader } from '../../../hooks/utilHooks';
 import {
@@ -62,7 +62,7 @@ const RemoveLiquidity: React.FC = () => {
   );
 
   const initialValues: IRemoveLiquidityForm = {
-    lqtBurned: 0,
+    lqtBurned: '',
     deadline: Number(deadlineFromStore),
     slippage: Number(slippage),
   };
@@ -85,7 +85,7 @@ const RemoveLiquidity: React.FC = () => {
         const data: RemoveLiquidityParams = {
           deadline,
           to: userAddress,
-          lqtBurned: formData.lqtBurned * 1e6,
+          lqtBurned: Number(formData.lqtBurned) * 1e6,
           minCashWithdrawn: otherValues.cashWithdraw,
           minTokensWithdrawn: otherValues.tokenWithdraw,
         };

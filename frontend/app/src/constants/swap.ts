@@ -3,7 +3,7 @@ import { ValueOf } from './helper';
 export interface ConversionFormParams {
   slippage: number;
   deadline: number;
-  amount: number | undefined;
+  amount: number | '';
 }
 
 export const BUTTON_TXT = {

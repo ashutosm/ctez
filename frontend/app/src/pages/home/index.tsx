@@ -1,6 +1,7 @@
 import { Flex, HStack, Stack, Text, useMediaQuery } from '@chakra-ui/react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import Button from '../../components/button/Button';
+import Button from '../../components/button';
 import Trade from '../../components/Trade';
 import { MODAL_NAMES } from '../../constants/modals';
 import { BUTTON_TXT } from '../../constants/swap';

@@ -13,7 +13,7 @@ import { ADD_BTN_TXT, IAddLiquidityForm } from '../../../constants/liquidity';
 import { addLiquidity, cfmmError } from '../../../contracts/cfmm';
 import { logger } from '../../../utils/logger';
 import { BUTTON_TXT } from '../../../constants/swap';
-import Button from '../../button/Button';
+import Button from '../../button';
 import { useAppSelector } from '../../../redux/store';
 import { useThemeColors, useTxLoader } from '../../../hooks/utilHooks';
 import { formatNumberStandard, inputFormatNumberStandard } from '../../../utils/numbers';
@@ -58,7 +58,7 @@ const AddLiquidity: React.FC = () => {
   const initialValues: IAddLiquidityForm = {
     slippage: Number(slippage),
     deadline: Number(deadlineFromStore),
-    amount: undefined,
+    amount: '',
     ctezAmount: undefined,
   };
 

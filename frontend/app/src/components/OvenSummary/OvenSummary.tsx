@@ -86,13 +86,13 @@ const OvenSummary: React.FC<IOvenCardProps> = (props) => {
       },
       {
         label: 'Outstanding ',
-        value: `${formatNumberStandard(stats?.totalOutstandingCtez.toFixed(2))} ctez`,
-        displayValue: `${formatNumberStandard(stats?.totalOutstandingCtez.toFixed(2))} ctez`,
+        value: `${formatNumberStandard(stats?.totalOutstandingCtez)} ctez`,
+        displayValue: `${formatNumberStandard(stats?.totalOutstandingCtez)} ctez`,
       },
       {
         label: 'Mintable ',
-        value: `${formatNumberStandard(stats?.totalRemainingMintableCtez.toFixed(2))} ctez`,
-        displayValue: `${formatNumberStandard(stats?.totalRemainingMintableCtez.toFixed(2))} ctez`,
+        value: `${formatNumberStandard(stats?.totalRemainingMintableCtez)} ctez`,
+        displayValue: `${formatNumberStandard(stats?.totalRemainingMintableCtez)} ctez`,
       },
       {
         label: 'Withdrawable ',
@@ -146,4 +146,4 @@ const OvenSummary: React.FC<IOvenCardProps> = (props) => {
   return content;
 };
 
-export default OvenSummary;
+export { OvenSummary };

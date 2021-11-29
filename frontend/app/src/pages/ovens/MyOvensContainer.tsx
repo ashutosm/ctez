@@ -2,7 +2,7 @@ import { Center, Text } from '@chakra-ui/react';
 import React, { useEffect, useMemo, useState } from 'react';
 import SkeletonLayout from '../../components/skeleton';
 import OvenCard from '../../components/OvenCard/OvenCard';
-import OvenSummary from '../../components/OvenSummary/OvenSummary';
+import OvenSummary from '../../components/OvenSummary';
 import { useSortedOvensList } from '../../hooks/utilHooks';
 import { useWallet } from '../../wallet/hooks';
 import { useOvenDataByAddresses, useUserOvenData } from '../../api/queries';

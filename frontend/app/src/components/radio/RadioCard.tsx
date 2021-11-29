@@ -36,4 +36,4 @@ const RadioCard: React.FC<UseRadioProps> = (props) => {
   );
 };
 
-export default RadioCard;
+export { RadioCard };

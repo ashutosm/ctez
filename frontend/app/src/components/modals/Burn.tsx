@@ -24,7 +24,7 @@ import { useCallback, useMemo } from 'react';
 import { IMintRepayForm } from '../../constants/oven-operations';
 import { cTezError, mintOrBurn } from '../../contracts/ctez';
 import { logger } from '../../utils/logger';
-import Button from '../button/Button';
+import Button from '../button';
 import { BUTTON_TXT } from '../../constants/swap';
 import { CTezIcon } from '../icons';
 import { AllOvenDatum } from '../../interfaces';
@@ -92,7 +92,7 @@ const Burn: React.FC<IBurnProps> = ({ isOpen, onClose, oven }) => {
       .required(t('required')),
   });
   const initialValues: IMintRepayForm = {
-    amount: 0,
+    amount: '',
   };
 
   const handleFormSubmit = async (data: IMintRepayForm) => {

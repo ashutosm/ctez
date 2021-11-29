@@ -23,14 +23,13 @@ import { IDepositForm } from '../../constants/oven-operations';
 import { BUTTON_TXT } from '../../constants/swap';
 import { cTezError, deposit } from '../../contracts/ctez';
 import { logger } from '../../utils/logger';
-
-import Button from '../button/Button';
+import Button from '../button';
 import { TezIcon } from '../icons';
 import { AllOvenDatum } from '../../interfaces';
 import { useThemeColors, useTxLoader } from '../../hooks/utilHooks';
 import { useWallet } from '../../wallet/hooks';
 import { useUserBalance } from '../../api/queries';
-import { formatNumber, inputFormatNumberStandard } from '../../utils/numbers';
+import { formatNumber, formatNumberStandard, inputFormatNumberStandard } from '../../utils/numbers';
 
 interface IDepositProps {
   isOpen: boolean;
@@ -64,7 +63,7 @@ const Deposit: React.FC<IDepositProps> = ({ isOpen, onClose, oven }) => {
 
   const { t } = useTranslation(['common']);
   const initialValues: IDepositForm = {
-    amount: 0,
+    amount: '',
   };
 
   const maxValue = (): number => balance?.xtz || 0.0;
@@ -79,7 +78,7 @@ const Deposit: React.FC<IDepositProps> = ({ isOpen, onClose, oven }) => {
   const handleFormSubmit = async (data: IDepositForm) => {
     if (oven?.value.address) {
       try {
-        const result = await deposit(oven.value.address, data.amount);
+        const result = await deposit(oven.value.address, Number(data.amount));
         handleProcessing(result);
       } catch (error) {
         logger.error(error);

@@ -42,4 +42,4 @@ const Identicon: React.FC<IdenticonProps> = ({
   );
 };
 
-export default Identicon;
+export { Identicon };

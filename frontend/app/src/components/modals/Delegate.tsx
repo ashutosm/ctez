@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { useDelegates } from '../../api/queries';
 import { useWallet } from '../../wallet/hooks';
-import Button from '../button/Button';
+import Button from '../button';
 import { cTezError, delegate } from '../../contracts/ctez';
 import { Oven } from '../../interfaces';
 

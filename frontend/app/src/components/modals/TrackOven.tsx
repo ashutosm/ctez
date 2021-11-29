@@ -20,7 +20,7 @@ import { useOvenData } from '../../api/queries';
 import { useWallet } from '../../wallet/hooks';
 import { CTEZ_ADDRESS } from '../../utils/globals';
 import { addExternalOven, getExternalOvens } from '../../utils/ovenUtils';
-import Button from '../button/Button';
+import Button from '../button';
 import { setExternalOvens } from '../../redux/slices/OvenSlice';
 import { useAppDispatch } from '../../redux/store';
 import { useThemeColors } from '../../hooks/utilHooks';

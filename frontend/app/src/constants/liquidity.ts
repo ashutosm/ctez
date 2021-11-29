@@ -1,7 +1,7 @@
 import { ValueOf } from './helper';
 
 export interface IAddLiquidityForm {
-  amount: number | undefined;
+  amount: number | undefined | '';
   ctezAmount: number | undefined;
   slippage: number;
   deadline: number;
@@ -17,7 +17,7 @@ export type TAddBtnTxt = ValueOf<typeof ADD_BTN_TXT>;
 
 export interface IRemoveLiquidityForm {
   deadline: number | undefined;
-  lqtBurned: number;
+  lqtBurned: number | '';
   slippage: number;
 }
 
