@@ -35,7 +35,7 @@ $TZC originate contract cfmm transferring 0.000001 from $deployment_key running 
 CFMM_ADDRESS=`$TZC show known contract cfmm`
 
 # Build and deploy the fa12 for the cfmm lqt, specifying the cfmm as admin
-ligo compile-storage fa12.mligo main "$(sed s/ADMIN_ADDRESS/$CFMM_ADDRESS/ < fa12_ctez_initial_storage.mligo)" > _build/fa12_lqt_storage.tz
+ligo compile-storage fa12.mligo main "$(sed s/ADMIN_ADDRESS/$CFMM_ADDRESS/ < fa12_cfmm_ctez_initial_storage.mligo)" > _build/fa12_lqt_storage.tz
 $TZC originate contract fa12_lqt transferring 0 from $deployment_key running 'file:_build/fa12.tz' --init "$(<_build/fa12_lqt_storage.tz)" --burn-cap 10
 FA12_LQT_ADDRESS=`$TZC show known contract fa12_lqt`
 

@@ -1,3 +1,5 @@
+#include "./common_types.mligo"
+
 type transfer =
   [@layout:comb]
   { [@annot:from] address_from : address;
@@ -43,6 +45,8 @@ type storage =
     allowances : allowances;
     admin : address;
     total_supply : nat;
+    metadata : contract_metadata ;
+    token_metadata : token_metadata_storage ;
   }
 
 type parameter =
