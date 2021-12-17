@@ -1,3 +1,5 @@
+#include "./common_types.mligo"
+
 (*
  Order of deployment
  1. Deploy the oven management contract (this contract)
@@ -38,6 +40,7 @@ type storage = {
   last_drift_update : timestamp ;
   ctez_fa12_address : address ; (* address of the fa12 contract managing the ctez token *)
   cfmm_address : address ; (* address of the cfmm providing the price feed *)
+  metadata : contract_metadata ;
 }
 type result = (operation list) * storage
 
