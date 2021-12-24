@@ -61,7 +61,7 @@ const CreateOven: React.FC<ICreateOvenProps> = ({ isOpen, onClose }) => {
 
   const toast = useToast();
   const { t } = useTranslation(['common']);
-  const options = ['Whitelist', 'Everyone'];
+  const options = ['Everyone', 'Whitelist'];
   const { data: balance } = useUserBalance(userAddress);
   const { data: userOvens } = useUserOvenData(userAddress);
   const [text1, text2, inputbg, text4, maxColor] = useThemeColors([
@@ -126,10 +126,10 @@ const CreateOven: React.FC<ICreateOvenProps> = ({ isOpen, onClose }) => {
   const initialValues: ICreateVaultForm = {
     delegate: '',
     amount: '',
-    depositType: 'Whitelist',
+    depositType: 'Everyone',
     depositors: userAddress ? getDefaultDepositorList('') : [],
     // ! Unneccessary variable
-    depositorOp: Depositor.whitelist,
+    depositorOp: Depositor.any,
   };
 
   const isInputValid = (inputValue: any) => {
@@ -182,7 +182,7 @@ const CreateOven: React.FC<ICreateOvenProps> = ({ isOpen, onClose }) => {
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'depositType',
-    defaultValue: 'Whitelist',
+    defaultValue: 'Everyone',
     onChange: (value) => formik.setFieldValue('depositType', value),
   });
   const group = getRootProps();
@@ -268,12 +268,18 @@ const CreateOven: React.FC<ICreateOvenProps> = ({ isOpen, onClose }) => {
                 })}
               </Flex>
             </FormControl>
-
-            <DepositorsInput
-              depositors={values.depositors}
-              onChange={(dep) => formik.setFieldValue('depositors', dep)}
-              outerBoxProps={{ mb: 2 }}
-            />
+            {values.depositType !== 'Everyone' && (
+              <div>
+                <DepositorsInput
+                  depositors={values.depositors}
+                  onChange={(dep) => formik.setFieldValue('depositors', dep)}
+                  outerBoxProps={{ mb: 2 }}
+                />
+                <Text color="#E87272" fontSize="12px" fontWeight="500">
+                  Don't forget to whitelist the payout address of your bakery
+                </Text>
+              </div>
+            )}
           </ModalBody>
 
           <ModalFooter>
