@@ -12,7 +12,7 @@
   {
     "id": 3,
     "topic": "Authorized Depositors",
-    "content": "A Tezos address that is granted access to deposit tez to and mint ctez from a specific oven"
+    "content": "A Tezos address that is granted access to deposit tez"
   },
   {
     "id": 4,
