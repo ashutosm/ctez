@@ -1,9 +1,10 @@
+import axios from 'axios';
 import BigNumber from 'bignumber.js';
 import { sub, format, differenceInDays } from 'date-fns';
 import { getCfmmStorage, getLQTContractStorage } from '../contracts/cfmm';
 import { getCtezStorage } from '../contracts/ctez';
 import { BaseStats, CTezTzktStorage, OvenBalance, UserLQTData } from '../interfaces';
-import { CONTRACT_DEPLOYMENT_DATE } from '../utils/globals';
+import { CONTRACT_DEPLOYMENT_DATE, RPC_URL } from '../utils/globals';
 import { getCTezTzktStorage, getLastBlockOfTheDay, getUserOvensAPI } from './tzkt';
 
 export const getPrevCTezStorage = async (
@@ -11,9 +12,20 @@ export const getPrevCTezStorage = async (
   userAddress?: string,
 ): Promise<CTezTzktStorage> => {
   const prevDate = format(sub(new Date(), { days }), 'yyyy-MM-dd');
+
   const lastBlock = await getLastBlockOfTheDay(prevDate, userAddress);
   const storage = await getCTezTzktStorage(lastBlock.level, userAddress);
   return storage;
+};
+export const getCurrentBlock = async () => {
+  const response = await axios.get(`${RPC_URL}/chains/main/blocks/head`);
+
+  return response.data.header.level;
+};
+export const getTimeStampOfBlock = async (block: number) => {
+  const response = await axios.get(`https://api.tzkt.io/v1/blocks/${block}`);
+
+  return response.data.timestamp;
 };
 
 export const getBaseStats = async (userAddress?: string): Promise<BaseStats> => {
@@ -22,13 +34,24 @@ export const getBaseStats = async (userAddress?: string): Promise<BaseStats> => 
   const cTezStorage = await getCtezStorage();
   const cfmmStorage = await getCfmmStorage();
   const cTez7dayStorage = await getPrevCTezStorage(prevStorageDays, userAddress);
+  const currentLevel = await getCurrentBlock();
+  const timestampCurrent = await getTimeStampOfBlock(currentLevel);
+  const date_timestampCurrent = new Date(timestampCurrent);
+  const timestamp_lastBlock_seconds = date_timestampCurrent.getTime() / 1000;
+  const past_block = currentLevel - 20160;
+  const timestampPast = await getTimeStampOfBlock(past_block);
+  const datedate_timestampPast = new Date(timestampPast);
+  const timestamp_past_seconds = datedate_timestampPast.getTime() / 1000;
+
   const prevTarget = Number(cTez7dayStorage.target) / 2 ** 48;
   const currentTarget = cTezStorage.target.toNumber() / 2 ** 48;
   const currentPrice = cfmmStorage.cashPool.toNumber() / cfmmStorage.tokenPool.toNumber();
   const premium = currentPrice === currentTarget ? 0 : currentPrice / currentTarget - 1.0;
   const drift = cTezStorage.drift.toNumber();
   const currentAnnualDrift = (1.0 + drift / 2 ** 48) ** (365.25 * 24 * 3600) - 1.0;
-  const annualDriftPastWeek = (currentTarget / prevTarget) ** 52.1786 - 1.0;
+  const timestamp_weekly_diff =
+    (365.25 * 24 * 3600) / (timestamp_lastBlock_seconds - timestamp_past_seconds);
+  const annualDriftPastWeek = (currentTarget / prevTarget) ** timestamp_weekly_diff - 1.0;
   const totalLiquidity = (cfmmStorage.cashPool.toNumber() * 2) / 1e6;
   return {
     originalTarget: cTezStorage.target.toNumber(),
