@@ -51,7 +51,7 @@ const DepositorsInfo: React.FC<{ oven: AllOvenDatum | undefined; isImported: boo
       ovenStorageData &&
       !Array.isArray(ovenStorageData.depositors) &&
       Object.keys(ovenStorageData.depositors).includes('any');
-
+    const whitelist = Array.prototype.slice.call(ovenStorageData.depositors.whitelist);
     return {
       canAnyoneDeposit: canAnyoneDepositLocal,
       depositors: canAnyoneDepositLocal
@@ -61,7 +61,7 @@ const DepositorsInfo: React.FC<{ oven: AllOvenDatum | undefined; isImported: boo
               value: oven.key.owner,
               label: oven.key.owner === userAddress ? 'You' : 'Owner',
             },
-            ...(ovenStorageData?.depositors as string[])?.map((dep) => ({
+            ...(whitelist as string[])?.map((dep) => ({
               value: dep,
               label: dep === baker ? 'Baker' : null,
             })),
