@@ -31,7 +31,7 @@ export enum Depositor {
   whitelist = 'whitelist',
 }
 
-export type depositors = string[] | { any: symbol };
+export type depositors = any;
 
 export type DepositorStatus = 'denyEveryone' | 'allowEveryone' | 'whitelist';
 
