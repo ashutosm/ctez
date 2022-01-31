@@ -50,8 +50,9 @@ export const getBaseStats = async (userAddress?: string): Promise<BaseStats> => 
   const drift = cTezStorage.drift.toNumber();
   const currentAnnualDrift = (1.0 + drift / 2 ** 48) ** (365.25 * 24 * 3600) - 1.0;
   const annualDriftPastWeek =
-    (currentTarget / prevTarget) ** (365.25 * 24 * 3600) /
-    (timestamp_lastBlock_seconds - timestamp_past_seconds);
+    (currentTarget / prevTarget) **
+      ((365.25 * 24 * 3600) / (timestamp_lastBlock_seconds - timestamp_past_seconds)) -
+    1.0;
   const totalLiquidity = (cfmmStorage.cashPool.toNumber() * 2) / 1e6;
   return {
     originalTarget: cTezStorage.target.toNumber(),
