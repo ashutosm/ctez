@@ -9,7 +9,7 @@ import {
 } from 'react';
 import { TransactionWalletOperation, WalletOperation } from '@taquito/taquito';
 import { Flex, Spinner, useColorMode, useToast } from '@chakra-ui/react';
-import { GroupBase, OptionsOrGroups } from 'react-select';
+import { GroupBase, OptionsOrGroups } from 'react-select/dist/declarations/src';
 import { getOvenMaxCtez } from '../utils/ovenUtils';
 import { useAppDispatch, useAppSelector } from '../redux/store';
 import { formatNumber } from '../utils/numbers';

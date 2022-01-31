@@ -9,7 +9,7 @@ import { useThemeColors } from '../hooks/utilHooks';
 export const AppRouter: React.FC = () => {
   const [backgroundColor] = useThemeColors(['routerBg']);
   const [toggled, setToggled] = useState(false);
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
 
   const handleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -17,7 +17,6 @@ export const AppRouter: React.FC = () => {
 
   function handleToggled(value: boolean) {
     setToggled(value);
-    value && setCollapsed(false);
   }
 
   return (
