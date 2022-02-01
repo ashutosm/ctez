@@ -41,6 +41,15 @@ const DepositorsInfo: React.FC<{ oven: AllOvenDatum | undefined; isImported: boo
       </div>
     );
   }, [cardbg, text4]);
+  const getWhiteList = (recvData: any) => {
+    try {
+      const list = Array.prototype.slice.call(recvData.depositors.whitelist);
+      return list;
+    } catch (err) {
+      console.log(err);
+      return [];
+    }
+  };
 
   const { depositors, canAnyoneDeposit, isLoading } = useMemo(() => {
     if (!oven || !ovenStorageData || !userAddress) {
@@ -51,7 +60,7 @@ const DepositorsInfo: React.FC<{ oven: AllOvenDatum | undefined; isImported: boo
       ovenStorageData &&
       !Array.isArray(ovenStorageData.depositors) &&
       Object.keys(ovenStorageData.depositors).includes('any');
-    const whitelist = Array.prototype.slice.call(ovenStorageData.depositors.whitelist);
+    const whitelist = getWhiteList(ovenStorageData);
     return {
       canAnyoneDeposit: canAnyoneDepositLocal,
       depositors: canAnyoneDepositLocal
