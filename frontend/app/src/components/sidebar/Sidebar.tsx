@@ -78,14 +78,14 @@ const Sidebar: React.FC<Props> = ({ handleCollapsed, handleToggled, collapsed, t
             {data?.currentAnnualDrift}%
           </Text>
         </Flex>
-        <Flex direction="row">
+        {/* <Flex direction="row">
           <Text color={sidebarTxt} fontSize="xs" cursor="default">
             Annual Drift (Past week)
           </Text>
           <Text marginLeft="auto" color={sidebarTxt} fontSize="xs" cursor="default">
             {data?.annualDriftPastWeek}%
           </Text>
-        </Flex>
+        </Flex> */}
       </Flex>
     );
   };
