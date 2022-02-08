@@ -92,7 +92,15 @@ const prepareOvenAllowAnyCall = (
     ...ovenContract.methods.allow_any(allow).toTransferParams(),
   };
 };
-
+const getWhiteList = (recvData: any) => {
+  try {
+    const list = Array.prototype.slice.call(recvData.depositors.whitelist);
+    return list;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
 export const addRemoveDepositorList = async (
   ovenAddress: string,
   ovenStorage: OvenStorage,
@@ -101,6 +109,7 @@ export const addRemoveDepositorList = async (
 ): Promise<any> => {
   const tezos = getTezosInstance();
   const ovenContract = await initContract(ovenAddress);
+  const whitelist = getWhiteList(ovenStorage);
   const disableAny =
     !Array.isArray(ovenStorage?.depositors) && Object.keys(ovenStorage?.depositors).includes('any');
   const batchOps: WalletParamsWithKind[] = [];
@@ -108,7 +117,7 @@ export const addRemoveDepositorList = async (
   if (disableAny) {
     batchOps.push(prepareOvenAllowAnyCall(ovenContract, false));
   } else {
-    prevAddresses = ovenStorage?.depositors as string[];
+    prevAddresses = whitelist as string[];
   }
   const newAddresses = addList.filter((o) => !prevAddresses.includes(o));
   newAddresses.forEach((addr) => {
