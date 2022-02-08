@@ -57,6 +57,16 @@ const ChangeDepositor: React.FC<IChangeDepositorProps> = (props) => {
   const group = getRootProps();
   const handleProcessing = useTxLoader();
 
+  const getWhiteList = (recvData: any) => {
+    try {
+      const list = Array.prototype.slice.call(recvData.depositors.whitelist);
+      return list;
+    } catch (err) {
+      console.log(err);
+      return [];
+    }
+  };
+  const whitelist = getWhiteList(props.ovenStorage);
   useEffect(() => {
     if (props.isOpen && depositors.length === 0 && props.ovenStorage) {
       setDepositors([
@@ -66,7 +76,7 @@ const ChangeDepositor: React.FC<IChangeDepositorProps> = (props) => {
           noDelete: true,
         },
         ...(!props.canAnyoneDeposit
-          ? (props.ovenStorage.depositors as string[])?.map((dep) => ({
+          ? (whitelist as string[])?.map((dep) => ({
               label: trimAddress(dep),
               value: dep,
             }))
@@ -113,8 +123,9 @@ const ChangeDepositor: React.FC<IChangeDepositorProps> = (props) => {
         const userWhiteList = depositors
           .map((item: IDepositorItem) => item?.value ?? item)
           .filter((o) => o !== userAddress);
+        const whitelistDepositors = getWhiteList(props.ovenStorage);
         const userDenyList = !props.canAnyoneDeposit
-          ? (props.ovenStorage.depositors as string[]).filter((o) => !userWhiteList.includes(o))
+          ? (whitelistDepositors as string[]).filter((o) => !userWhiteList.includes(o))
           : undefined;
         const result = await addRemoveDepositorList(
           props.oven.value.address,
