@@ -15,6 +15,18 @@ export const formatNumberStandard = (value: number | string | null | undefined) 
   );
 };
 
+export const summaryFormatNumberStandard = (value: number | string | null | undefined) => {
+  if (value == null || Number.isNaN(Number(value))) {
+    return 0;
+  }
+  return Number(
+    Number(value).toLocaleString('en-US', {
+      maximumFractionDigits: 0,
+      useGrouping: false,
+    }),
+  );
+};
+
 export const inputFormatNumberStandard = (value: number | string | null | undefined) => {
   if (value == null || Number.isNaN(Number(value))) {
     return 0;

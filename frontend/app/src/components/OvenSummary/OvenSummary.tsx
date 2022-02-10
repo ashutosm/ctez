@@ -2,7 +2,7 @@ import { Box, CSSObject, Flex, Grid, Text, useMediaQuery } from '@chakra-ui/reac
 import React, { useMemo } from 'react';
 import { AllOvenDatum } from '../../interfaces';
 import { useOvenSummary, useThemeColors } from '../../hooks/utilHooks';
-import { formatNumberStandard } from '../../utils/numbers';
+import { summaryFormatNumberStandard } from '../../utils/numbers';
 
 interface IOvenCardProps {
   ovens: AllOvenDatum[];
@@ -80,24 +80,19 @@ const OvenSummary: React.FC<IOvenCardProps> = (props) => {
   const renderedItems = useMemo(() => {
     const items = [
       {
-        label: 'Total Balance',
-        value: `${formatNumberStandard(stats?.totalBalance)} tez`,
-        displayValue: `${formatNumberStandard(stats?.totalBalance)} tez`,
+        label: 'Total tez in ovens',
+        value: `${summaryFormatNumberStandard(stats?.totalBalance)} tez`,
+        displayValue: `${summaryFormatNumberStandard(stats?.totalBalance)} tez`,
       },
       {
-        label: 'Outstanding ',
-        value: `${formatNumberStandard(stats?.totalOutstandingCtez)} ctez`,
-        displayValue: `${formatNumberStandard(stats?.totalOutstandingCtez)} ctez`,
+        label: 'Outstanding ctez ',
+        value: `${summaryFormatNumberStandard(stats?.totalOutstandingCtez)} ctez`,
+        displayValue: `${summaryFormatNumberStandard(stats?.totalOutstandingCtez)} ctez`,
       },
       {
-        label: 'Mintable ',
-        value: `${formatNumberStandard(stats?.totalRemainingMintableCtez)} ctez`,
-        displayValue: `${formatNumberStandard(stats?.totalRemainingMintableCtez)} ctez`,
-      },
-      {
-        label: 'Withdrawable ',
-        value: `${formatNumberStandard(stats?.totalWithdrawableTez)} tez`,
-        displayValue: `${formatNumberStandard(stats?.totalWithdrawableTez)} tez`,
+        label: 'Mintable ctez ',
+        value: `${summaryFormatNumberStandard(stats?.totalRemainingMintableCtez)} ctez`,
+        displayValue: `${summaryFormatNumberStandard(stats?.totalRemainingMintableCtez)} ctez`,
       },
     ]
       .filter((x): x is { label: string; value: string; displayValue: string } => !!x)
@@ -105,11 +100,6 @@ const OvenSummary: React.FC<IOvenCardProps> = (props) => {
 
     return (
       <>
-        <Box key="summaryTitle" id="summaryTitle">
-          <Text fontWeight="600" color={textcolor} fontSize="xl" mt={1}>
-            Oven Summary
-          </Text>
-        </Box>
         {items.map((item) => (
           <Box key={item.id} id={item.id}>
             <Text fontWeight="500" color="#B0B7C3" fontSize="xs">
