@@ -62,5 +62,6 @@ module.exports = {
     'no-nested-ternary': 'warn',
     'no-unneeded-ternary': 'warn',
     '@typescript-eslint/naming-convention': 'warn',
+    'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: true }],
   },
 };
