@@ -67,7 +67,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/no-unused-prop-types': 'off',
     'react/jsx-no-bind': [
-      false,
+      0,
       {
         ignoreDOMComponents: false,
         ignoreRefs: false,
