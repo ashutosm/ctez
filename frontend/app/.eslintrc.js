@@ -64,6 +64,17 @@ module.exports = {
     '@typescript-eslint/naming-convention': 'warn',
     'react/default-props-match-prop-types': ['error', { allowRequiredDefaults: true }],
     'react/prop-types': 'off',
-    'react/require-default-props': 'off'
+    'react/require-default-props': 'off',
+    'react/no-unused-prop-types': 'off',
+    'react/jsx-no-bind': [
+      false,
+      {
+        ignoreDOMComponents: false,
+        ignoreRefs: false,
+        allowArrowFunctions: false,
+        allowFunctions: false,
+        allowBind: false,
+      },
+    ],
   },
 };
