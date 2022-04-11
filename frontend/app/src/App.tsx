@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import  HelmetProvider  from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ChakraProvider } from '@chakra-ui/react';
 import { WalletProvider } from './wallet/walletContext';
